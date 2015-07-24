@@ -19,3 +19,7 @@ There needs to be a good way to track your actual progress towards the creation 
 * http://www.gw2db.com/
 * https://www.gw2spidy.com/
 * http://wiki.guildwars2.com/wiki/Legendary_weapon
+** http://wiki.guildwars2.com/wiki/Kudzu
+
+## Wireframe
+http://imgur.com/P47ZDY2
