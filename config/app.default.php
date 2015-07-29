@@ -93,7 +93,7 @@ return [
          */
         '_cake_core_' => [
             'className' => 'File',
-            'prefix' => 'myapp_cake_core_',
+            'prefix' => 'gw2l_cake_core_',
             'path' => CACHE . 'persistent/',
             'serialize' => true,
             'duration' => '+2 minutes',
@@ -106,7 +106,7 @@ return [
          */
         '_cake_model_' => [
             'className' => 'File',
-            'prefix' => 'myapp_cake_model_',
+            'prefix' => 'gw2l_cake_model_',
             'path' => CACHE . 'models/',
             'serialize' => true,
             'duration' => '+2 minutes',
