@@ -1,0 +1,92 @@
+$tier: #99d5e5;
+$legendary: #4C139D;
+$text: #333;
+
+$column1: #7eb2bf;
+$column2: #8bbc7c;
+$column3: #ccae70;
+$column4: #d19697;
+
+header h1 {
+  margin-top: 60px;
+}
+
+.tree {
+  ul {
+    /* Some odd fix to prevent ul's being indented */
+    -webkit-margin-before: 0;
+    -webkit-margin-after: 0;
+    -webkit-padding-start: 0;
+  }
+  ul li {
+    margin: 0;
+    list-style: none;
+    text-align: center;
+    span{
+      color: $text;
+      display: inline-block;
+      padding: 3px;
+      background-color: #efefef;
+      border: 1px solid darken(#efefef, 15%);
+      border-radius: 4px;
+      input {
+        color: $text;
+        border: 1px solid $text;
+        border-radius: 2px;
+        padding: 0;
+        background-color: transparent;
+      }
+    }
+    span.legendary {
+      width: 100px;
+      padding: 5px 10px;
+      text-align: center;
+      color: #fff;
+      background-color: $legendary;
+      position: absolute;
+      left: 46%;
+    }
+  }
+
+  > ul > li { // Top tier
+    width: 100%;
+    float: left;
+    > ul > li { // Tier 1
+      width: 24%;
+      margin: 70px 5px 0;
+      float: left;
+      //border: 1px solid green;
+      > span { background-color: $tier; }
+      > ul > li { // Tier 2
+        width: 25%;
+        margin-top: 50px;
+        float: left;
+        //border: 1px solid blue;
+        > span { background-color: darken($tier, 10%); }
+        > ul > li { // Tier 3
+          &:first-child {
+            &::before {
+              content: "↑";
+              font-size: 25px;
+            }
+          }
+          float: left;
+          //border: 1px solid orange;
+          > span { background-color: darken($tier, 20%); }
+          > ul > li { // Tier 4
+            &:first-child {
+              &::before {
+                content: "↑";
+                font-size: 25px;
+              }
+            }
+            float: left;
+            //border: 1px solid deeppink;
+            > span { background-color: darken($tier, 30%); }
+          }
+        }
+      }
+    }
+  }
+
+}

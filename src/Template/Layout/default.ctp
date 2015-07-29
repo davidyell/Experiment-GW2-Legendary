@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <?php $this->assign('title', $title);?>
     <title><?= $this->fetch('title') ?></title>
     <?= $this->Html->meta('icon') ?>
 
@@ -19,7 +20,7 @@
 
 </head>
 <body>
-    <div class="container">
+    <div class="container-fluid">
         <header class="row">
             <h1>Track your Guild Wars 2 Legendary</h1>
             <?= $this->cell('navigation');?>

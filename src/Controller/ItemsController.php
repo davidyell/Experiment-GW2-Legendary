@@ -24,6 +24,7 @@ class ItemsController extends AppController
     {
         $legendaries = $this->Items->Legendaries->find();
         $this->set('legendaries', $legendaries);
+        $this->set('title', 'Track your Guild Wars 2 Legendary progress');
     }
 
     /**
@@ -57,5 +58,6 @@ class ItemsController extends AppController
             ->contain(['Ingredients']);
 
         $this->set(compact('legendary', 'children', 'flatChildren'));
+        $this->set('title', 'Track your GW2 ' . $legendary->name . ' progress');
     }
 }
