@@ -19,7 +19,7 @@ class ItemsController extends AppController
     public function index()
     {
         $this->paginate = [
-            'contain' => ['ParentItems']
+            'contain' => ['Legendaries', 'Ingredients', 'ParentItems']
         ];
         $this->set('items', $this->paginate($this->Items));
     }
@@ -34,7 +34,7 @@ class ItemsController extends AppController
     public function view($id = null)
     {
         $item = $this->Items->get($id, [
-            'contain' => ['ParentItems', 'ChildItems']
+            'contain' => ['Legendaries', 'Ingredients', 'ParentItems', 'ChildItems']
         ]);
         $this->set('item', $item);
     }
@@ -48,6 +48,8 @@ class ItemsController extends AppController
     {
         $item = $this->Items->newEntity();
         if ($this->request->is('post')) {
+            $this->Items->behaviors()->Tree->config('scope', ['legendary_id' => $this->request->data['legendary_id']]);
+
             $item = $this->Items->patchEntity($item, $this->request->data);
             if ($this->Items->save($item)) {
                 $this->Flash->success(__('The item has been saved.'));
@@ -56,8 +58,18 @@ class ItemsController extends AppController
                 $this->Flash->error(__('The item could not be saved. Please, try again.'));
             }
         }
-        $parentItems = $this->Items->ParentItems->find('treeList');
-        $this->set(compact('item', 'parentItems'));
+        $legendaries = $this->Items->Legendaries->find('list', ['limit' => 200]);
+        $ingredients = $this->Items->Ingredients->find('list', ['limit' => 200]);
+        $parentItems = $this->Items->ParentItems->find('treeList', [
+                'keyPath' => function ($entity) {
+                    return $entity->id;
+                },
+                'valuePath' => function ($entity) {
+                    return $entity->ingredient->name;
+                }
+            ])
+            ->contain(['Ingredients']);
+        $this->set(compact('item', 'legendaries', 'ingredients', 'parentItems'));
     }
 
     /**
@@ -73,6 +85,8 @@ class ItemsController extends AppController
             'contain' => []
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
+            $this->Items->behaviors()->Tree->config('scope', ['legendary_id' => $this->request->data['legendary_id']]);
+
             $item = $this->Items->patchEntity($item, $this->request->data);
             if ($this->Items->save($item)) {
                 $this->Flash->success(__('The item has been saved.'));
@@ -81,8 +95,18 @@ class ItemsController extends AppController
                 $this->Flash->error(__('The item could not be saved. Please, try again.'));
             }
         }
-        $parentItems = $this->Items->ParentItems->find('treeList');
-        $this->set(compact('item', 'parentItems'));
+        $legendaries = $this->Items->Legendaries->find('list', ['limit' => 200]);
+        $ingredients = $this->Items->Ingredients->find('list', ['limit' => 200]);
+        $parentItems = $this->Items->ParentItems->find('treeList', [
+                'keyPath' => function ($entity) {
+                    return $entity->id;
+                },
+                'valuePath' => function ($entity) {
+                    return $entity->ingredient->name;
+                }
+            ])
+            ->contain(['Ingredients']);
+        $this->set(compact('item', 'legendaries', 'ingredients', 'parentItems'));
     }
 
     /**

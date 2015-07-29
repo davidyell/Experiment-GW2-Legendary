@@ -2,6 +2,10 @@
     <h3><?= __('Actions') ?></h3>
     <ul class="side-nav">
         <li><?= $this->Html->link(__('New Item'), ['action' => 'add']) ?></li>
+        <li><?= $this->Html->link(__('List Legendaries'), ['controller' => 'Legendaries', 'action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('New Legendary'), ['controller' => 'Legendaries', 'action' => 'add']) ?></li>
+        <li><?= $this->Html->link(__('List Ingredients'), ['controller' => 'Ingredients', 'action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('New Ingredient'), ['controller' => 'Ingredients', 'action' => 'add']) ?></li>
     </ul>
 </div>
 <div class="items index large-10 medium-9 columns">
@@ -9,12 +13,12 @@
     <thead>
         <tr>
             <th><?= $this->Paginator->sort('id') ?></th>
-            <th><?= $this->Paginator->sort('name') ?></th>
+            <th><?= $this->Paginator->sort('legendary_id') ?></th>
+            <th><?= $this->Paginator->sort('ingredient_id') ?></th>
             <th><?= $this->Paginator->sort('quantity') ?></th>
             <th><?= $this->Paginator->sort('parent_id') ?></th>
             <th><?= $this->Paginator->sort('lft') ?></th>
             <th><?= $this->Paginator->sort('rght') ?></th>
-            <th><?= $this->Paginator->sort('created') ?></th>
             <th class="actions"><?= __('Actions') ?></th>
         </tr>
     </thead>
@@ -22,14 +26,18 @@
     <?php foreach ($items as $item): ?>
         <tr>
             <td><?= $this->Number->format($item->id) ?></td>
-            <td><?= h($item->name) ?></td>
+            <td>
+                <?= $item->has('legendary') ? $this->Html->link($item->legendary->name, ['controller' => 'Legendaries', 'action' => 'view', $item->legendary->id]) : '' ?>
+            </td>
+            <td>
+                <?= $item->has('ingredient') ? $this->Html->link($item->ingredient->name, ['controller' => 'Ingredients', 'action' => 'view', $item->ingredient->id]) : '' ?>
+            </td>
             <td><?= $this->Number->format($item->quantity) ?></td>
             <td>
                 <?= $item->has('parent_item') ? $this->Html->link($item->parent_item->name, ['controller' => 'Items', 'action' => 'view', $item->parent_item->id]) : '' ?>
             </td>
             <td><?= $this->Number->format($item->lft) ?></td>
             <td><?= $this->Number->format($item->rght) ?></td>
-            <td><?= h($item->created) ?></td>
             <td class="actions">
                 <?= $this->Html->link(__('View'), ['action' => 'view', $item->id]) ?>
                 <?= $this->Html->link(__('Edit'), ['action' => 'edit', $item->id]) ?>

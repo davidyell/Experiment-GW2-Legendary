@@ -1,8 +1,8 @@
-<h1><?= $item->name?></h1>
+<h2><?= $legendary->name?></h2>
 
 <div class="tree">
     <ul>
-        <li><a href="#"><?= $item->name?></a>
+        <li><a href="#"><?= $legendary->name?></a>
             <?= $this->Hierarchy->tree($children->toArray()) ?>
         </li>
     </ul>
@@ -22,9 +22,9 @@
         data.addColumn('string', 'ToolTip');
 
         data.addRows([
-            [{v: "<?= $item->id?>", f: "<?= $item->quantity?> <?= $item->name?>"}, "", "<?= $item->name?>"],
+            [{v: "<?= $legendary->items[0]->id?>", f: "<?= $legendary->quantity?> <?= $legendary->name?>"}, "", "<?= $legendary->name?>"],
             <?php foreach ($flatChildren as $item): ?>
-                [{v: "<?= $item->id?>", f: "<?= $item->quantity?> <?= $item->name?>"}, "<?= $item->parent_id?>", "<?= $item->name?>"],
+                [{v: "<?= $item->id?>", f: "<?= $item->quantity?> <?= $item->ingredient->name?>"}, "<?= $item->parent_id?>", "<?= $item->ingredient->name?>"],
             <?php endforeach;?>
         ]);
 

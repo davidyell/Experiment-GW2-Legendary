@@ -5,6 +5,10 @@
         <li><?= $this->Form->postLink(__('Delete Item'), ['action' => 'delete', $item->id], ['confirm' => __('Are you sure you want to delete # {0}?', $item->id)]) ?> </li>
         <li><?= $this->Html->link(__('List Items'), ['action' => 'index']) ?> </li>
         <li><?= $this->Html->link(__('New Item'), ['action' => 'add']) ?> </li>
+        <li><?= $this->Html->link(__('List Legendaries'), ['controller' => 'Legendaries', 'action' => 'index']) ?> </li>
+        <li><?= $this->Html->link(__('New Legendary'), ['controller' => 'Legendaries', 'action' => 'add']) ?> </li>
+        <li><?= $this->Html->link(__('List Ingredients'), ['controller' => 'Ingredients', 'action' => 'index']) ?> </li>
+        <li><?= $this->Html->link(__('New Ingredient'), ['controller' => 'Ingredients', 'action' => 'add']) ?> </li>
         <li><?= $this->Html->link(__('List Parent Items'), ['controller' => 'Items', 'action' => 'index']) ?> </li>
         <li><?= $this->Html->link(__('New Parent Item'), ['controller' => 'Items', 'action' => 'add']) ?> </li>
     </ul>
@@ -13,8 +17,10 @@
     <h2><?= h($item->name) ?></h2>
     <div class="row">
         <div class="large-5 columns strings">
-            <h6 class="subheader"><?= __('Name') ?></h6>
-            <p><?= h($item->name) ?></p>
+            <h6 class="subheader"><?= __('Legendary') ?></h6>
+            <p><?= $item->has('legendary') ? $this->Html->link($item->legendary->name, ['controller' => 'Legendaries', 'action' => 'view', $item->legendary->id]) : '' ?></p>
+            <h6 class="subheader"><?= __('Ingredient') ?></h6>
+            <p><?= $item->has('ingredient') ? $this->Html->link($item->ingredient->name, ['controller' => 'Ingredients', 'action' => 'view', $item->ingredient->id]) : '' ?></p>
             <h6 class="subheader"><?= __('Parent Item') ?></h6>
             <p><?= $item->has('parent_item') ? $this->Html->link($item->parent_item->name, ['controller' => 'Items', 'action' => 'view', $item->parent_item->id]) : '' ?></p>
         </div>
@@ -43,7 +49,8 @@
     <table cellpadding="0" cellspacing="0">
         <tr>
             <th><?= __('Id') ?></th>
-            <th><?= __('Name') ?></th>
+            <th><?= __('Legendary Id') ?></th>
+            <th><?= __('Ingredient Id') ?></th>
             <th><?= __('Quantity') ?></th>
             <th><?= __('Parent Id') ?></th>
             <th><?= __('Lft') ?></th>
@@ -55,7 +62,8 @@
         <?php foreach ($item->child_items as $childItems): ?>
         <tr>
             <td><?= h($childItems->id) ?></td>
-            <td><?= h($childItems->name) ?></td>
+            <td><?= h($childItems->legendary_id) ?></td>
+            <td><?= h($childItems->ingredient_id) ?></td>
             <td><?= h($childItems->quantity) ?></td>
             <td><?= h($childItems->parent_id) ?></td>
             <td><?= h($childItems->lft) ?></td>

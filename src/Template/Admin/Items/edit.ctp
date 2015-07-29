@@ -8,6 +8,10 @@
             )
         ?></li>
         <li><?= $this->Html->link(__('List Items'), ['action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('List Legendaries'), ['controller' => 'Legendaries', 'action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('New Legendary'), ['controller' => 'Legendaries', 'action' => 'add']) ?></li>
+        <li><?= $this->Html->link(__('List Ingredients'), ['controller' => 'Ingredients', 'action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('New Ingredient'), ['controller' => 'Ingredients', 'action' => 'add']) ?></li>
         <li><?= $this->Html->link(__('List Parent Items'), ['controller' => 'Items', 'action' => 'index']) ?></li>
         <li><?= $this->Html->link(__('New Parent Item'), ['controller' => 'Items', 'action' => 'add']) ?></li>
     </ul>
@@ -17,7 +21,8 @@
     <fieldset>
         <legend><?= __('Edit Item') ?></legend>
         <?php
-            echo $this->Form->input('name');
+            echo $this->Form->input('legendary_id', ['options' => $legendaries]);
+            echo $this->Form->input('ingredient_id', ['options' => $ingredients]);
             echo $this->Form->input('quantity');
             echo $this->Form->input('parent_id', ['options' => $parentItems, 'empty' => true]);
         ?>

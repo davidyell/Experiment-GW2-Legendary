@@ -10,6 +10,8 @@ use Cake\Validation\Validator;
 /**
  * Items Model
  *
+ * @property \Cake\ORM\Association\BelongsTo $Legendaries
+ * @property \Cake\ORM\Association\BelongsTo $Ingredients
  * @property \Cake\ORM\Association\BelongsTo $ParentItems
  * @property \Cake\ORM\Association\HasMany $ChildItems
  */
@@ -33,6 +35,14 @@ class ItemsTable extends Table
         $this->addBehavior('Timestamp');
         $this->addBehavior('Tree');
 
+        $this->belongsTo('Legendaries', [
+            'foreignKey' => 'legendary_id',
+            'joinType' => 'INNER'
+        ]);
+        $this->belongsTo('Ingredients', [
+            'foreignKey' => 'ingredient_id',
+            'joinType' => 'INNER'
+        ]);
         $this->belongsTo('ParentItems', [
             'className' => 'Items',
             'foreignKey' => 'parent_id'
@@ -56,10 +66,6 @@ class ItemsTable extends Table
             ->allowEmpty('id', 'create');
 
         $validator
-            ->requirePresence('name', 'create')
-            ->notEmpty('name');
-
-        $validator
             ->add('quantity', 'valid', ['rule' => 'numeric'])
             ->requirePresence('quantity', 'create')
             ->notEmpty('quantity');
@@ -76,6 +82,8 @@ class ItemsTable extends Table
      */
     public function buildRules(RulesChecker $rules)
     {
+        $rules->add($rules->existsIn(['legendary_id'], 'Legendaries'));
+        $rules->add($rules->existsIn(['ingredient_id'], 'Ingredients'));
         $rules->add($rules->existsIn(['parent_id'], 'ParentItems'));
         return $rules;
     }
