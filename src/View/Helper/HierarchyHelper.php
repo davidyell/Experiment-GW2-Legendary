@@ -21,7 +21,7 @@ class HierarchyHelper extends Helper
         if (!empty($thread) && is_array($thread)) {
             foreach ($thread as $item) {
                 $out .= "<ul>";
-                $out .= "<li><a href='#'>" . $item->quantity . ' ' . $item->ingredient->name . "</a>";
+                $out .= "<li><input type='number' maxlength='3' size='3' min='0' max='{$item->quantity}'>/" . $item->quantity . ' ' . $item->ingredient->name;
                 if (!empty($item->children)) {
                     $this->tree($item->children, $out);
                 }

@@ -2,7 +2,7 @@
 
 <div class="tree">
     <ul>
-        <li><a href="#"><?= $legendary->name?></a>
+        <li><?= $legendary->name?>
             <?= $this->Hierarchy->tree($children->toArray()) ?>
         </li>
     </ul>
