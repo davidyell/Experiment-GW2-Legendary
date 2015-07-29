@@ -28,7 +28,10 @@ class LegendariesTable extends Table
         $this->table('legendaries');
         $this->displayField('name');
         $this->primaryKey('id');
+
         $this->addBehavior('Timestamp');
+        $this->addBehavior('Muffin/Slug.Slug');
+
         $this->hasMany('Items', [
             'foreignKey' => 'legendary_id'
         ]);

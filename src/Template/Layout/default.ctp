@@ -1,27 +1,30 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <?= $this->Html->charset() ?>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title><?= $this->fetch('title') ?></title>
     <?= $this->Html->meta('icon') ?>
 
-    <?= $this->Html->css(['common']) ?>
+    <?= $this->Html->css([
+        '//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css',
+        '//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css',
+        'common'
+    ]) ?>
 
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
 
 </head>
 <body>
-    <header>
-        <h1>Track your Guild Wars 2 Legendary</h1>
-        <nav>
-            <ul>
-                <li><?= $this->Html->link('Pick your legendary', '/');?></li>
-            </ul>
-        </nav>
-    </header>
-    <div id="container">
+    <div class="container">
+        <header class="row">
+            <h1>Track your Guild Wars 2 Legendary</h1>
+            <?= $this->cell('navigation');?>
+        </header>
+
         <div id="content">
             <?= $this->Flash->render() ?>
 
@@ -29,9 +32,15 @@
                 <?= $this->fetch('content') ?>
             </div>
         </div>
+
+        <footer class="row">
+        </footer>
     </div>
-    <footer>
-    </footer>
+
+    <?= $this->Html->script([
+        '//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js',
+        '//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js'
+    ])?>
     <?= $this->fetch('script') ?>
 </body>
 </html>
