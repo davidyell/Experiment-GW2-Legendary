@@ -15,6 +15,7 @@
 namespace App\Controller;
 
 use Cake\Controller\Controller;
+use Cake\Event\Event;
 
 /**
  * Application Controller
@@ -27,16 +28,20 @@ use Cake\Controller\Controller;
 class AppController extends Controller
 {
 
-    /**
-     * Initialization hook method.
-     *
-     * Use this method to add common initialization code like loading components.
-     *
-     * @return void
-     */
     public function initialize()
     {
         parent::initialize();
         $this->loadComponent('Flash');
     }
+
+    public function beforeFilter(Event $event)
+    {
+        parent::beforeFilter($event);
+
+        if (!empty($this->request->prefix) && $this->request->prefix === 'admin') {
+            $this->layout = 'admin';
+        }
+    }
+
+
 }

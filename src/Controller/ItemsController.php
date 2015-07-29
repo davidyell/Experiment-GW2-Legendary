@@ -16,10 +16,11 @@ class ItemsController extends AppController
     public function view()
     {
         $item = $this->Items->get(1);
+        $flatChildren = $this->Items->find('children', ['for' => 1]);
 
         $children = $this->Items->find('children', ['for' => 1])
             ->find('threaded');
 
-        $this->set(compact('item', 'children'));
+        $this->set(compact('item', 'children', 'flatChildren'));
     }
 }
