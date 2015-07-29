@@ -12,7 +12,7 @@ There needs to be a good way to track your actual progress towards the creation 
 * Ability to select the legendary and see the ingredient tree
 * Perhaps import the costs for ingredients
 * Hash of progress to the url, so progress can be linked, or bookmarked. 
-** Perhaps backed by db with login.
+ * Perhaps backed by db with login.
 
 ## References
 * http://gw2legendary.com/
