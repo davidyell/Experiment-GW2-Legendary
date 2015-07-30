@@ -7,7 +7,7 @@
 #
 # Host: 127.0.0.1 (MySQL 5.6.25)
 # Database: gw2_legendary
-# Generation Time: 2015-07-29 12:01:21 +0000
+# Generation Time: 2015-07-30 09:17:52 +0000
 # ************************************************************
 
 
@@ -28,6 +28,7 @@ DROP TABLE IF EXISTS `ingredients`;
 CREATE TABLE `ingredients` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL DEFAULT '',
+  `slug` varchar(255) NOT NULL,
   `created` datetime DEFAULT NULL,
   `modified` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -36,46 +37,46 @@ CREATE TABLE `ingredients` (
 LOCK TABLES `ingredients` WRITE;
 /*!40000 ALTER TABLE `ingredients` DISABLE KEYS */;
 
-INSERT INTO `ingredients` (`id`, `name`, `created`, `modified`)
+INSERT INTO `ingredients` (`id`, `name`, `slug`, `created`, `modified`)
 VALUES
-	(1,'Kudzu','2015-07-29 11:52:38','2015-07-29 11:52:38'),
-	(2,'Gift of Mastery','2015-07-29 11:52:38','2015-07-29 11:52:38'),
-	(3,'Bloodstone Shard','2015-07-29 11:52:38','2015-07-29 11:52:38'),
-	(4,'Obsidian Shard','2015-07-29 11:52:38','2015-07-29 11:52:38'),
-	(5,'Gift of Exploration','2015-07-29 11:52:38','2015-07-29 11:52:38'),
-	(6,'Gift of Battle','2015-07-29 11:52:38','2015-07-29 11:52:38'),
-	(7,'Badges of Honor','2015-07-29 11:52:38','2015-07-29 11:52:38'),
-	(8,'Gift of Fortune','2015-07-29 11:52:38','2015-07-29 11:52:38'),
-	(9,'Glob of Ectoplasm','2015-07-29 11:52:38','2015-07-29 11:52:38'),
-	(10,'Mystic Clover','2015-07-29 11:52:38','2015-07-29 11:52:38'),
-	(11,'Mystic Coins','2015-07-29 11:52:38','2015-07-29 11:52:38'),
-	(14,'Crystals','2015-07-29 11:52:38','2015-07-29 11:52:38'),
-	(15,'Philosopher\'s Stone','2015-07-29 11:52:38','2015-07-29 11:52:38'),
-	(16,'Gift of Magic','2015-07-29 11:52:38','2015-07-29 11:52:38'),
-	(17,'Vial of Powerful Blood','2015-07-29 11:52:38','2015-07-29 11:52:38'),
-	(18,'Powerful Venom Sacs','2015-07-29 11:52:38','2015-07-29 11:52:38'),
-	(19,'Elaborate Totem','2015-07-29 11:52:38','2015-07-29 11:52:38'),
-	(20,'Pile of Crystalline Dust','2015-07-29 11:52:38','2015-07-29 11:52:38'),
-	(21,'Gift of Might','2015-07-29 11:52:38','2015-07-29 11:52:38'),
-	(22,'Vicious Fang','2015-07-29 11:52:38','2015-07-29 11:52:38'),
-	(23,'Armored Scale','2015-07-29 11:52:38','2015-07-29 11:52:38'),
-	(24,'Vicious Claw','2015-07-29 11:52:38','2015-07-29 11:52:38'),
-	(25,'Ancient Bone','2015-07-29 11:52:38','2015-07-29 11:52:38'),
-	(26,'Gift of Kudzu','2015-07-29 11:52:38','2015-07-29 11:52:38'),
-	(27,'Icy Runestone','2015-07-29 11:52:38','2015-07-29 11:52:38'),
-	(28,'Superior Rune of Celerity','2015-07-29 11:52:38','2015-07-29 11:52:38'),
-	(29,'Gift of Wood','2015-07-29 11:52:38','2015-07-29 11:52:38'),
-	(30,'Ancient Wood Plank','2015-07-29 11:52:38','2015-07-29 11:52:38'),
-	(31,'Elder Wood Plank','2015-07-29 11:52:38','2015-07-29 11:52:38'),
-	(32,'Hard Wood Plank','2015-07-29 11:52:38','2015-07-29 11:52:38'),
-	(33,'Seasoned Wood Plank','2015-07-29 11:52:38','2015-07-29 11:52:38'),
-	(34,'Gift of Nature','2015-07-29 11:52:38','2015-07-29 11:52:38'),
-	(35,'Omnomberry','2015-07-29 11:52:38','2015-07-29 11:52:38'),
-	(36,'Cured Hardened Leather Square','2015-07-29 11:52:38','2015-07-29 11:52:38'),
-	(38,'Gift of Thorns','2015-07-29 11:52:38','2015-07-29 11:52:38'),
-	(39,'Deadly Bloom','2015-07-29 11:52:38','2015-07-29 11:52:38'),
-	(40,'Leaf of Kudzu','2015-07-29 11:52:38','2015-07-29 11:52:38'),
-	(41,'The Bifrost','2015-07-29 11:10:23','2015-07-29 11:10:23');
+	(1,'Kudzu','kudzu','2015-07-29 11:52:38','2015-07-29 11:52:38'),
+	(2,'Gift of Mastery','gift-of-mastery','2015-07-29 11:52:38','2015-07-29 11:52:38'),
+	(3,'Bloodstone Shard','bloodstone-shard','2015-07-29 11:52:38','2015-07-29 11:52:38'),
+	(4,'Obsidian Shard','obsidian-shard','2015-07-29 11:52:38','2015-07-29 11:52:38'),
+	(5,'Gift of Exploration','gift-of-exploration','2015-07-29 11:52:38','2015-07-29 11:52:38'),
+	(6,'Gift of Battle','gift-of-battle','2015-07-29 11:52:38','2015-07-29 11:52:38'),
+	(7,'Badges of Honor','badges-of-honor','2015-07-29 11:52:38','2015-07-29 11:52:38'),
+	(8,'Gift of Fortune','gift-of-fortune','2015-07-29 11:52:38','2015-07-29 11:52:38'),
+	(9,'Glob of Ectoplasm','glob-of-ectoplasm','2015-07-29 11:52:38','2015-07-29 11:52:38'),
+	(10,'Mystic Clover','mystic-clover','2015-07-29 11:52:38','2015-07-29 11:52:38'),
+	(11,'Mystic Coins','mystic-coins','2015-07-29 11:52:38','2015-07-29 11:52:38'),
+	(14,'Crystals','crystals','2015-07-29 11:52:38','2015-07-29 11:52:38'),
+	(15,'Philosopher\'s Stone','philosopher-s-stone','2015-07-29 11:52:38','2015-07-29 11:52:38'),
+	(16,'Gift of Magic','gift-of-magic','2015-07-29 11:52:38','2015-07-29 11:52:38'),
+	(17,'Vial of Powerful Blood','vial-of-powerful-blood','2015-07-29 11:52:38','2015-07-29 11:52:38'),
+	(18,'Powerful Venom Sacs','powerful-venom-sacs','2015-07-29 11:52:38','2015-07-29 11:52:38'),
+	(19,'Elaborate Totem','elaborate-totem','2015-07-29 11:52:38','2015-07-29 11:52:38'),
+	(20,'Pile of Crystalline Dust','pile-of-crystalline-dust','2015-07-29 11:52:38','2015-07-29 11:52:38'),
+	(21,'Gift of Might','gift-of-might','2015-07-29 11:52:38','2015-07-29 11:52:38'),
+	(22,'Vicious Fang','vicious-fang','2015-07-29 11:52:38','2015-07-29 11:52:38'),
+	(23,'Armored Scale','armored-scale','2015-07-29 11:52:38','2015-07-29 11:52:38'),
+	(24,'Vicious Claw','vicious-claw','2015-07-29 11:52:38','2015-07-29 11:52:38'),
+	(25,'Ancient Bone','ancient-bone','2015-07-29 11:52:38','2015-07-29 11:52:38'),
+	(26,'Gift of Kudzu','gift-of-kudzu','2015-07-29 11:52:38','2015-07-29 11:52:38'),
+	(27,'Icy Runestone','icy-runestone','2015-07-29 11:52:38','2015-07-29 11:52:38'),
+	(28,'Superior Rune of Celerity','superior-rune-of-celerity','2015-07-29 11:52:38','2015-07-29 11:52:38'),
+	(29,'Gift of Wood','gift-of-wood','2015-07-29 11:52:38','2015-07-29 11:52:38'),
+	(30,'Ancient Wood Plank','ancient-wood-plank','2015-07-29 11:52:38','2015-07-29 11:52:38'),
+	(31,'Elder Wood Plank','elder-wood-plank','2015-07-29 11:52:38','2015-07-29 11:52:38'),
+	(32,'Hard Wood Plank','hard-wood-plank','2015-07-29 11:52:38','2015-07-29 11:52:38'),
+	(33,'Seasoned Wood Plank','seasoned-wood-plank','2015-07-29 11:52:38','2015-07-29 11:52:38'),
+	(34,'Gift of Nature','gift-of-nature','2015-07-29 11:52:38','2015-07-29 11:52:38'),
+	(35,'Omnomberry','omnomberry','2015-07-29 11:52:38','2015-07-29 11:52:38'),
+	(36,'Cured Hardened Leather Square','cured-hardened-leather-square','2015-07-29 11:52:38','2015-07-29 11:52:38'),
+	(38,'Gift of Thorns','gift-of-thorns','2015-07-29 11:52:38','2015-07-29 11:52:38'),
+	(39,'Deadly Bloom','deadly-bloom','2015-07-29 11:52:38','2015-07-29 11:52:38'),
+	(40,'Leaf of Kudzu','leaf-of-kudzu','2015-07-29 11:52:38','2015-07-29 11:52:38'),
+	(41,'The Bifrost','the-bifrost','2015-07-29 11:10:23','2015-07-29 11:10:23');
 
 /*!40000 ALTER TABLE `ingredients` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -160,6 +161,7 @@ DROP TABLE IF EXISTS `legendaries`;
 CREATE TABLE `legendaries` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL DEFAULT '',
+  `slug` varchar(255) DEFAULT NULL,
   `type` varchar(255) NOT NULL,
   `created` datetime DEFAULT NULL,
   `modified` datetime DEFAULT NULL,
@@ -169,28 +171,28 @@ CREATE TABLE `legendaries` (
 LOCK TABLES `legendaries` WRITE;
 /*!40000 ALTER TABLE `legendaries` DISABLE KEYS */;
 
-INSERT INTO `legendaries` (`id`, `name`, `type`, `created`, `modified`)
+INSERT INTO `legendaries` (`id`, `name`, `slug`, `type`, `created`, `modified`)
 VALUES
-	(1,'The Bifrost','Staff','2015-07-29 11:45:53','2015-07-29 11:45:53'),
-	(2,'Bolt','Sword','2015-07-29 11:45:59','2015-07-29 11:45:59'),
-	(4,'The Dreamer','Short bow','2015-07-29 11:46:16','2015-07-29 11:46:16'),
-	(5,'The Flameseeker Prophecies','Shield','2015-07-29 11:46:30','2015-07-29 11:46:30'),
-	(6,'Frenzy','Harpoon Gun','2015-07-29 11:46:36','2015-07-29 11:46:36'),
-	(7,'Frostfang','Axe','2015-07-29 11:47:16','2015-07-29 11:47:16'),
-	(8,'Howler','Warhorn','2015-07-29 11:47:24','2015-07-29 11:47:24'),
-	(9,'Incinerator','Dagger','2015-07-29 11:47:34','2015-07-29 11:47:34'),
-	(10,'The Juggernaut','Hammer','2015-07-29 11:48:06','2015-07-29 11:48:06'),
-	(11,'Kudzu','Longbow','2015-07-29 11:48:17','2015-07-29 11:48:17'),
-	(12,'Kraitkin','Trident','2015-07-29 11:48:54','2015-07-29 11:48:54'),
-	(13,'Kamohoali\'i Kotaki','Spear','2015-07-29 11:49:17','2015-07-29 11:49:17'),
-	(14,'Meteorlogicus','Scepter','2015-07-29 11:49:39','2015-07-29 11:49:39'),
-	(15,'The Minstrel','Focus','2015-07-29 11:49:50','2015-07-29 11:49:50'),
-	(16,'The Moot','Mace','2015-07-29 11:49:58','2015-07-29 11:49:58'),
-	(17,'The Predator','Rifle','2015-07-29 11:50:07','2015-07-29 11:50:07'),
-	(18,'Quip','Pistol','2015-07-29 11:50:15','2015-07-29 11:50:15'),
-	(19,'Rodgort','Torch','2015-07-29 11:50:24','2015-07-29 11:50:24'),
-	(20,'Sunrise','Greatsword','2015-07-29 11:50:32','2015-07-29 11:50:32'),
-	(21,'Twilight','Greatsword','2015-07-29 11:50:42','2015-07-29 11:50:42');
+	(1,'The Bifrost','the-bifrost','Staff','2015-07-29 11:45:53','2015-07-29 11:45:53'),
+	(2,'Bolt','bolt','Sword','2015-07-29 11:45:59','2015-07-29 11:45:59'),
+	(4,'The Dreamer','the-dreamer','Short bow','2015-07-29 11:46:16','2015-07-29 11:46:16'),
+	(5,'The Flameseeker Prophecies','the-flameseeker-prophecies','Shield','2015-07-29 11:46:30','2015-07-29 11:46:30'),
+	(6,'Frenzy','frenzy','Harpoon Gun','2015-07-29 11:46:36','2015-07-29 11:46:36'),
+	(7,'Frostfang','frostfang','Axe','2015-07-29 11:47:16','2015-07-29 11:47:16'),
+	(8,'Howler','howler','Warhorn','2015-07-29 11:47:24','2015-07-29 11:47:24'),
+	(9,'Incinerator','incinerator','Dagger','2015-07-29 11:47:34','2015-07-29 11:47:34'),
+	(10,'The Juggernaut','the-juggernaut','Hammer','2015-07-29 11:48:06','2015-07-29 11:48:06'),
+	(11,'Kudzu','kudzu','Longbow','2015-07-29 11:48:17','2015-07-29 11:48:17'),
+	(12,'Kraitkin','kraitkin','Trident','2015-07-29 11:48:54','2015-07-29 11:48:54'),
+	(13,'Kamohoali\'i Kotaki','kamohoali-i-kotaki','Spear','2015-07-29 11:49:17','2015-07-29 11:49:17'),
+	(14,'Meteorlogicus','meteorlogicus','Scepter','2015-07-29 11:49:39','2015-07-29 11:49:39'),
+	(15,'The Minstrel','the-minstrel','Focus','2015-07-29 11:49:50','2015-07-29 11:49:50'),
+	(16,'The Moot','the-moot','Mace','2015-07-29 11:49:58','2015-07-29 11:49:58'),
+	(17,'The Predator','the-predator','Rifle','2015-07-29 11:50:07','2015-07-29 11:50:07'),
+	(18,'Quip','quip','Pistol','2015-07-29 11:50:15','2015-07-29 11:50:15'),
+	(19,'Rodgort','rodgort','Torch','2015-07-29 11:50:24','2015-07-29 11:50:24'),
+	(20,'Sunrise','sunrise','Greatsword','2015-07-29 11:50:32','2015-07-29 11:50:32'),
+	(21,'Twilight','twilight','Greatsword','2015-07-29 11:50:42','2015-07-29 11:50:42');
 
 /*!40000 ALTER TABLE `legendaries` ENABLE KEYS */;
 UNLOCK TABLES;

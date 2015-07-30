@@ -28,7 +28,12 @@ class IngredientsTable extends Table
         $this->table('ingredients');
         $this->displayField('name');
         $this->primaryKey('id');
+
         $this->addBehavior('Timestamp');
+        $this->addBehavior('Muffin/Slug.Slug', [
+            'slugger' => '\App\Lib\Slugger\MySlugger'
+        ]);
+
         $this->hasMany('Items', [
             'foreignKey' => 'ingredient_id'
         ]);

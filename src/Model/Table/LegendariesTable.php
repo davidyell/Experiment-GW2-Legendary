@@ -30,7 +30,9 @@ class LegendariesTable extends Table
         $this->primaryKey('id');
 
         $this->addBehavior('Timestamp');
-        $this->addBehavior('Muffin/Slug.Slug');
+        $this->addBehavior('Muffin/Slug.Slug', [
+            'slugger' => '\App\Lib\Slugger\MySlugger'
+        ]);
 
         $this->hasMany('Items', [
             'foreignKey' => 'legendary_id'

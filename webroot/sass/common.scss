@@ -12,6 +12,7 @@ header h1 {
 }
 
 .tree {
+  width: 99%;
   ul {
     /* Some odd fix to prevent ul's being indented */
     -webkit-margin-before: 0;
@@ -19,9 +20,25 @@ header h1 {
     -webkit-padding-start: 0;
   }
   ul li {
-    margin: 0;
+    margin: 1px;
     list-style: none;
     text-align: center;
+    &[data-name="crystals"], &[data-name="philosopher-s-stone"] {
+      margin: 0;
+      > span {
+        border-color: invert($tier);
+      }
+    }
+    &[data-name="crystals"] {
+      margin-top: 5px;
+      border-bottom: none;
+    }
+    &[data-name="philosopher-s-stone"] {
+      border-top: none;
+    }
+    &[data-name="crystals"]::after {
+      content: "OR"
+    }
     span{
       color: $text;
       display: inline-block;
@@ -39,7 +56,7 @@ header h1 {
       .progress {
         width: 100%;
         height: 10px;
-        margin: 0;
+        margin: 3px 0 0 0;
         border: 1px solid $text;
       }
     }
@@ -62,13 +79,19 @@ header h1 {
       margin: 70px 5px 0;
       float: left;
       //border: 1px solid green;
-      > span { background-color: $tier; }
+      > span {
+        background-color: $tier;
+        border-color: darken($tier, 20%);
+      }
       > ul > li { // Tier 2
-        width: 25%;
+        width: 24%;
         margin-top: 50px;
         float: left;
         //border: 1px solid blue;
-        > span { background-color: darken($tier, 10%); }
+        > span {
+          background-color: darken($tier, 10%);
+          border-color: darken($tier, 30%);
+        }
         > ul > li { // Tier 3
           &:first-child {
             &::before {
@@ -78,7 +101,10 @@ header h1 {
           }
           float: left;
           //border: 1px solid orange;
-          > span { background-color: darken($tier, 20%); }
+          > span {
+            background-color: darken($tier, 20%);
+            border-color: darken($tier, 40%);
+          }
           > ul > li { // Tier 4
             &:first-child {
               &::before {
@@ -88,7 +114,10 @@ header h1 {
             }
             float: left;
             //border: 1px solid deeppink;
-            > span { background-color: darken($tier, 30%); }
+            > span {
+              background-color: darken($tier, 30%);
+              border-color: darken($tier, 50%);
+            }
           }
         }
       }
