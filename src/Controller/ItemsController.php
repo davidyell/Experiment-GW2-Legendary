@@ -50,14 +50,15 @@ class ItemsController extends AppController
 
         $this->Items->behaviors()->Tree->config('scope', ['legendary_id' => $legendary->id]);
 
-        $flatChildren = $this->Items->find('children', ['for' => $legendary->items[0]->id])
-            ->contain(['Ingredients']);
-
         $children = $this->Items->find('children', ['for' => $legendary->items[0]->id])
             ->find('threaded')
             ->contain(['Ingredients']);
 
-        $this->set(compact('legendary', 'children', 'flatChildren'));
+        $totalItems = $this->Items->find();
+        $totalItems->select(['sum' => $totalItems->func()->sum('quantity')])
+            ->where(['legendary_id' => $legendary->id]);
+
+        $this->set(compact('legendary', 'children', 'totalItems'));
         $this->set('title', 'Track your GW2 ' . $legendary->name . ' progress');
     }
 }

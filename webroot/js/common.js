@@ -47,6 +47,8 @@ function processHash() {
             setProgress(bar, parts[1]);
         });
     }
+
+    setGlobalProgress();
 }
 
 /**
@@ -63,13 +65,37 @@ function setProgress(bar, val) {
         percent = Math.round((parseInt(val) / max) * 100);
     }
 
-    $(bar).attr('aria-valuenow', val).css('width', percent + '%').html(percent + "%");
+    $(bar).attr('aria-valuenow', percent).css('width', percent + '%').html(percent + "%");
 
     if (parseInt(percent) == 100) {
         $(bar).parents('span').addClass('complete');
     } else {
         $(bar).parents('span').removeClass('complete');
     }
+}
+
+/**
+ * Set the global progress bar
+ *
+ * @return void
+ */
+function setGlobalProgress() {
+    var value = 0,
+        val,
+        percent,
+        total = $('div.progress.global .progress-bar').data('total');
+
+    $('.tree input[type=number]').each(function (i, e) {
+        val = $(this).val();
+
+        if (parseInt(val) > 0) {
+            value += parseInt(val);
+        }
+    });
+
+    percent = Math.round((value / total) * 100);
+
+    $('div.progress.global .progress-bar').attr('aria-valuenow', percent).css('width', percent + '%').html(percent + "%");
 }
 
 /**
@@ -84,6 +110,7 @@ $(function () {
             bar = $(this).siblings('div.progress').children('div.progress-bar');
 
         setProgress(bar, val);
+        setGlobalProgress();
         buildHash();
     });
 
