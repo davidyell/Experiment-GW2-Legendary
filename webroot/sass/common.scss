@@ -1,11 +1,7 @@
-$tier: #99d5e5;
+$tier: #dceae8;
 $legendary: #4C139D;
 $text: #333;
-
-$column1: #7eb2bf;
-$column2: #8bbc7c;
-$column3: #ccae70;
-$column4: #d19697;
+$complete: #5281d3;
 
 header h1 {
   margin-top: 60px;
@@ -46,6 +42,14 @@ header h1 {
       background-color: #efefef;
       border: 1px solid darken(#efefef, 15%);
       border-radius: 4px;
+      &.complete {
+        color: #fff;
+        background-color: $complete;
+        input {
+          color: #fff;
+          border-color: #fff;
+        }
+      }
       input {
         color: $text;
         border: 1px solid $text;
@@ -58,6 +62,10 @@ header h1 {
         height: 10px;
         margin: 3px 0 0 0;
         border: 1px solid $text;
+        .progress-bar {
+          font-size: 9px;
+          line-height: 8px;
+        }
       }
     }
     span.legendary {
