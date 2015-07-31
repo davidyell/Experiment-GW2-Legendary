@@ -23,7 +23,7 @@
     <div class="container-fluid">
         <header class="row">
             <h1>Track your Guild Wars 2 Legendary</h1>
-            <?= $this->cell('navigation');?>
+            <?= $this->cell('Navigation');?>
         </header>
 
         <div id="content">
