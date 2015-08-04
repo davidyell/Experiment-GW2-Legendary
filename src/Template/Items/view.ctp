@@ -15,3 +15,9 @@
     <div class="clearfix"><!-- blank --></div>
 </div>
 
+<div class="shopping-list">
+    <h3>Required items</h3>
+    <ul id="required">
+
+    </ul>
+</div>

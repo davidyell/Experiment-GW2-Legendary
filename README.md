@@ -6,7 +6,7 @@ There needs to be a good way to track your actual progress towards the creation 
 
 ## Features
 * ~~Hierarchical view to easily show which ingredients go together to make the legendary~~
-* Tracks the numbers of ingredients so you know what you've got left to gather
+* ~~Tracks the numbers of ingredients so you know what you've got left to gather~~
 * Tracks totals where multiple stacks of ingredients are needed for different components
 * ~~A nice big percentage progress bar~~
 * ~~Ability to select the legendary and see the ingredient tree~~
