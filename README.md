@@ -25,4 +25,9 @@ There needs to be a good way to track your actual progress towards the creation 
 http://imgur.com/P47ZDY2
 
 ## My current progress with Kudzu
+
+```bash
+cd webroot && php -S localhost:8765
+```
+
 http://localhost:8765/legendary/kudzu#2=1&3=200&4=250&5=1&6=1&7=500&10=28&11=231&12=94&13=100&14=1&15=19&17=12&18=25&19=21&22=15&23=17&24=10&25=54&28=1&30=74&31=250&32=250&33=250&35=250&36=17&39=390
